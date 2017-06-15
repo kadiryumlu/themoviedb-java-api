@@ -1,7 +1,5 @@
 package org.themoviedb.api;
 
-import java.util.ArrayList;
-import java.util.Date;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -85,6 +83,7 @@ public class Movie {
 					video, 
 					voteAverage);
 		} catch (JSONException e) {
+			System.out.println("Movie -> fromJSONString()");
 			return null;
 		}
 	}

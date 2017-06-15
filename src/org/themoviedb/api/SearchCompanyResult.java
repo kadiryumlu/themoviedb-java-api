@@ -1,53 +1,54 @@
 package org.themoviedb.api;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class SearchMovieResult {
+public class SearchCompanyResult {
 	private int page;
-	private Movie[] results;
+	private Company[] results;
 	private int totalResults;
 	private int totalPages;
 	
-	public SearchMovieResult(){
+	public SearchCompanyResult(){
 		
 	}
 	
-	public static SearchMovieResult fromJSONString(String json){
+	public static SearchCompanyResult fromJSONString(String json){
 		try {
 			JSONObject jObject = new JSONObject(json);
 			int page = jObject.getInt("page");
-			Movie[] results = toMovieArray(jObject.getJSONArray("results"));
+			Company[] results = toCompanyArray(jObject.getJSONArray("results"));
 			int totalResults = jObject.getInt("total_results");
 			int totalPages = jObject.getInt("total_pages");
 			
-			return new SearchMovieResult(page, results, totalResults, totalPages);
+			return new SearchCompanyResult(page, results, totalResults, totalPages);
 		} catch (JSONException e) {
-			System.out.println("SearchMovieResult");
+			System.out.println("SearchCompanyResult");
 			return null;
 		}
 	}
 	
-	public SearchMovieResult(int page, Movie[] results, int totalResults, int totalPages){
+	public SearchCompanyResult(int page, Company[] results, int totalResults, int totalPages){
 		this.page = page;
 		this.results = results;
 		this.totalResults = totalResults;
 		this.totalPages = totalPages;
 	}
 	
-	private static Movie[] toMovieArray(JSONArray jArray){
-		Movie[] movies = new Movie[jArray.length()];
+	private static Company[] toCompanyArray(JSONArray jArray){
+		Company[] companies = new Company[jArray.length()];
 		try{
 			for(int i =0; i < jArray.length(); i++){
 				JSONObject item = jArray.getJSONObject(i);
-				Movie movie = Movie.fromJSONString(item.toString());
+				Company company = Company.fromJSONString(item.toString());
 				
-				movies[i] = movie;
+				companies[i] = company;
 			}
 			
-			return movies;
+			return companies;
 		}catch(JSONException e){
-			System.out.println("SearchMovieResult -> toMovieArray()");
+			System.out.println("SearchCompanyResult -> toCompanyArray()");
 			return null;
 		}
 	}
@@ -66,10 +67,10 @@ public class SearchMovieResult {
 	}
 	
 	//Results
-	public Movie[] getResults(){
+	public Company[] getResults(){
 		return results;
 	}
-	public void setResults(Movie[] results){
+	public void setResults(Company[] results){
 		this.results = results;
 	}
 	
