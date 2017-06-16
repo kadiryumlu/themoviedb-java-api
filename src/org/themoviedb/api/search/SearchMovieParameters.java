@@ -1,4 +1,4 @@
-package org.themoviedb.api;
+package org.themoviedb.api.search;
 
 import java.net.URLEncoder;
 import org.themoviedb.api.utils.Region;

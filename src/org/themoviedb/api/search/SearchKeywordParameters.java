@@ -1,12 +1,12 @@
-package org.themoviedb.api;
+package org.themoviedb.api.search;
 
 import java.net.URLEncoder;
 
-public class SearchCompanyParameters {
+public class SearchKeywordParameters {
 	private String query;
 	private int page;
 	
-	public SearchCompanyParameters(String query){
+	public SearchKeywordParameters(String query){
 		this.query = query;
 		this.page = 0;
 	}
@@ -36,7 +36,7 @@ public class SearchCompanyParameters {
 				parameters.append("&page=" + page);
 			}
 		} catch(Exception e){
-			System.out.println("SearchCompanyParameters -> toString()\n" + e.getMessage());
+			System.out.println("SearchKeywordParameters -> toString()\n" + e.getMessage());
 		}
 		
 		return parameters.toString();

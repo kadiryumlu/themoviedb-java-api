@@ -1,4 +1,4 @@
-package org.themoviedb.api;
+package org.themoviedb.api.search;
 
 import org.json.JSONArray;
 import org.json.JSONException;

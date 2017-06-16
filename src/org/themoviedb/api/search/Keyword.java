@@ -1,32 +1,29 @@
-package org.themoviedb.api;
+package org.themoviedb.api.search;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Company {
+public class Keyword {
 	private int id;
-	private String logoPath;
 	private String name;
 	
-	public Company(){
+	public Keyword(){
 		//
 	}
 	
-	public Company(int id, String logoPath, String name){
+	public Keyword(int id, String name){
 		this.id = id;
-		this.logoPath = logoPath;
 		this.name = name;
 	}
 	
-	public static Company fromJSONString(String json){
+	public static Keyword fromJSONString(String json){
 		try {
 			JSONObject jObject = new JSONObject(json);
 			int id = jObject.getInt("id");
-			String logoPath = jObject.getString("logo_path");
 			String name = jObject.getString("name");
-			return new Company(id, logoPath, name);
+			return new Keyword(id, name);
 		} catch (JSONException e) {
-			System.out.println("Company -> fromJSONString()");
+			System.out.println("Keyword -> fromJSONString()");
 			return null;
 		}
 	}
@@ -37,14 +34,6 @@ public class Company {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	
-	//LogoPath
-	public String getLogoPath() {
-		return logoPath;
-	}
-	public void setLogoPath(String logoPath) {
-		this.logoPath = logoPath;
 	}
 	
 	//Name
